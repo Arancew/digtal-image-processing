@@ -4,7 +4,7 @@ import numpy as np
 
 plt.rc("font", family='Microsoft YaHei')
 img = plt.imread('../img/4.1.jpg')
-img=img[:,:,0]*255
+img=img[:,:,0]*255 # 像素归一画
 plt.subplot(131), plt.title('原始图像')
 plt.imshow(img, 'gray')
 best_th=1 # 选出来的最好的阈值
