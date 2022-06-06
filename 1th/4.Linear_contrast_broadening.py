@@ -34,12 +34,12 @@ for i in range(img.shape[0]):
             img[i][j] = 40 * (img[i][j] - 80)/9 + 25
         else:
             img[i][j] = (img[i][j] - 125) * 3 / 13 + 225
-plt.subplot(223), plt.plot(bar), plt.title('原始直方图')
+plt.subplot(223),plt.bar(range(len(bar)),bar), plt.title('原始直方图')
 bar = np.zeros(256, dtype=int)
 for i in img:
     for j in i:
         bar[j] += 1
-plt.subplot(224), plt.plot(bar), plt.title('线性展宽后的直方图')
+plt.subplot(224), plt.bar(range(len(bar)),bar), plt.title('线性展宽后的直方图')
 plt.subplot(222), plt.title("2.线性展宽后"), plt.axis('off')
 plt.imshow(img, cmap="gray")
 plt.show()
