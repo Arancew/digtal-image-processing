@@ -5,7 +5,8 @@ import numpy as np
 plt.rc("font", family='Microsoft YaHei')
 img = plt.imread('../img/4.1.jpg')
 img=img[:,:,0]*255 # 像素归一画
-plt.subplot(131), plt.title('原始图像')
+plt.subplot(121), plt.title('原始图像')
+plt.axis('off')
 plt.imshow(img, 'gray')
 best_th=1 # 选出来的最好的阈值
 best_s=0
@@ -39,9 +40,9 @@ for i in range(img.shape[0]):
             img_new[i][j]=0
         else:
             img_new[i][j]=255
-plt.subplot(132), plt.title('图像分割后图像')
+plt.subplot(122), plt.title('图像分割后图像')
 plt.imshow(img_new, 'gray')
 plt.axis('off')
-plt.subplot(133), plt.title('s与th变化趋势')
-plt.plot(bar)
+# plt.subplot(133), plt.title('s与th变化趋势')
+# plt.plot(bar)
 plt.show()

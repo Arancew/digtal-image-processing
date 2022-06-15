@@ -17,8 +17,8 @@ def convolution(img_old, kernel):
 
 
 plt.rc("font", family='Microsoft YaHei')
-img = plt.imread('../img/3.1.jpg')  # 读取图片
-img = img[:, :, 0]  # 把图片从三通道变为单通道
+img = plt.imread('../img/lena.jpg')  # 读取图片
+# img = img[:, :, 0]  # 把图片从三通道变为单通道
 plt.subplot(241), plt.title("1.原图"), plt.axis('off')
 plt.imshow(img, cmap="gray")
 
@@ -79,8 +79,9 @@ for i in range(1, img.shape[0] - 1):  # 第一列和最后一列不用处理
     for j in range(1, img.shape[1] - 1):
         s = np.log(img[i - 1][j] + 1) + np.log(img[i + 1][j] + 1) + np.log(img[i][j - 1] + 1) + np.log(
             img[i][j + 1] + 1)  # 加1防止取0
-        s *= 46  # 让取值从5.45到255
-        img_Wallis[i][j] = 46 * np.log(img[i][j]) - s / 4
+        s = s*46/4  # 让取值从5.45到255
+        img_Wallis[i][j] = (int)(46 * np.log(img[i][j]+1) - s)
+img_Wallis=img_Wallis+abs(np.min(img_Wallis))
 plt.subplot(248), plt.title("8.Wallis锐化后"), plt.axis('off')
 plt.imshow(img_Wallis, cmap="gray")
 
